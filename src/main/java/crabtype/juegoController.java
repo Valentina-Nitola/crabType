@@ -23,7 +23,8 @@ public class juegoController {
     @FXML private ImageView sol;
     @FXML private Button btnMusica;
 
-    private final String[] frases = {"JavaFX", "Programacion", "Evento", "Interface", "Desarrollo"};
+    private final String[] frases = {
+            "Sol", "Mar", "Luz", "Casa", "Gato", "Perro", "Agua", "Luna", "Mesa", "Mano", "Rio", "Flor", "Pan", "Dia", "Roca", "Vaso", "Calle", "Cielo", "Fuego", "Dedo", "Silla", "Oso", "Viento", "Nube", "Nieve", "Llama", "Llave", "Rayo", "Rojo", "Verde", "Azul", "Oro", "Miel", "Muro", "Pozo", "Voz", "Tela", "Sombra", "Mago", "Cine", "Carta", "Pato", "Lente", "Dama", "Copa", "Joya", "Caña", "Pez", "Salto", "Reloj"};
     private final HashMap<Integer, String> solImagenes = new HashMap<>();
 
     private int nivel = 1;
@@ -41,7 +42,7 @@ public class juegoController {
     @FXML
     public void initialize() {
         cargarImagenesSol();
-        iniciarMusica(); // 🔥 Se asegura que la música solo se inicie una vez
+        iniciarMusica(); // Se asegura que la música solo se inicie una vez
         actualizarBotonMusica();
         iniciarNivel();
 
