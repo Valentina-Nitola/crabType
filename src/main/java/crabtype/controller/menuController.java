@@ -1,4 +1,4 @@
-package crabtype;
+package crabtype.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +44,10 @@ public class menuController {
 
     private void abrirPantallaJuego() {
         try {
+            if (mediaPlayer != null && isMusicOn) {
+                mediaPlayer.pause(); // Pausar la música antes de cambiar de pantalla
+            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/crabtypeInterfaz/crabtypeJuego.fxml"));
             Parent root = loader.load();
 

@@ -1,8 +1,11 @@
-package crabtype;
+package crabtype.controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -10,7 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.HashMap;
@@ -19,6 +24,7 @@ public class juegoController {
     @FXML private Label lblTiempo;
     @FXML private Label lblNivel;
     @FXML private Label lblFrase;
+    @FXML private Label lblError;
     @FXML private TextArea txtEntrada;
     @FXML private ImageView sol;
     @FXML private Button btnMusica;
@@ -32,22 +38,18 @@ public class juegoController {
     private int vidas = 4;
     private Timeline timeline;
 
-    // 🎵 Variables de música (static para evitar múltiples instancias)
     private static MediaPlayer mediaPlayer;
     private static boolean isMusicOn = true;
-
-    private final Image imgSonidoOn = new Image(getClass().getResource("/crabtypeInterfaz/img/sonidoOn.png").toExternalForm());
-    private final Image imgSonidoOff = new Image(getClass().getResource("/crabtypeInterfaz/img/sonidoOff.png").toExternalForm());
 
     @FXML
     public void initialize() {
         cargarImagenesSol();
-        iniciarMusica(); // Se asegura que la música solo se inicie una vez
+        iniciarMusica();
         actualizarBotonMusica();
         iniciarNivel();
+        lblError.setVisible(false); // Ocultar mensaje de error al inicio
 
         btnMusica.setOnAction(event -> toggleMusica());
-
         txtEntrada.setOnKeyPressed(event -> {
             if (event.getCode().toString().equals("ENTER")) {
                 validarPalabra();
@@ -67,6 +69,7 @@ public class juegoController {
         lblNivel.setText("Nivel: " + nivel);
         lblFrase.setText(frases[new Random().nextInt(frases.length)]);
         txtEntrada.clear();
+        lblError.setVisible(false); // Ocultar mensaje de error al iniciar nuevo nivel
         iniciarTemporizador();
     }
 
@@ -96,13 +99,51 @@ public class juegoController {
 
     private void manejarError() {
         timeline.stop();
+        sonarError();
         vidas--;
         actualizarSol();
+/*
+        System.out.println("Error detectado - Mostrando mensaje"); // Depuración
+        mostrarMensajeError();
+*/
         if (vidas > 0) {
             iniciarNivel();
         } else {
-            lblFrase.setText("Juego Terminado");
-            txtEntrada.setDisable(true);
+            cargarPantallaReinicio();
+        }
+    }
+
+/*
+    private void mostrarMensajeError() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("¡Palabra incorrecta!");
+        alert.showAndWait();
+    }
+*/
+    private void sonarError() {
+        URL errorSoundURL = getClass().getResource("/crabtypeInterfaz/sounds/error.mp3");
+        if (errorSoundURL != null) {
+            Media errorSound = new Media(errorSoundURL.toExternalForm());
+            MediaPlayer errorPlayer = new MediaPlayer(errorSound);
+            errorPlayer.play();
+        } else {
+            System.out.println("⚠ No se encontró el archivo de sonido de error.");
+        }
+    }
+
+    private void cargarPantallaReinicio() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/crabtypeInterfaz/crabtypeReiniciar.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) lblFrase.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error al cargar crabtypeReinicio.fxml");
         }
     }
 
@@ -112,9 +153,8 @@ public class juegoController {
         }
     }
 
-    // 🎵 Métodos de Música 🎵
     private void iniciarMusica() {
-        if (mediaPlayer == null) { // Solo se inicializa si no existe un MediaPlayer
+        if (mediaPlayer == null) {
             URL musicURL = getClass().getResource("/crabtypeInterfaz/sounds/crabtype.mp3");
             if (musicURL != null) {
                 Media media = new Media(musicURL.toExternalForm());
@@ -142,10 +182,13 @@ public class juegoController {
     }
 
     private void actualizarBotonMusica() {
-        if (isMusicOn) {
-            btnMusica.setGraphic(new ImageView(imgSonidoOn));
+        String imgPath = isMusicOn ? "/crabtypeInterfaz/img/sonidoOn.png" : "/crabtypeInterfaz/img/sonidoOff.png";
+        URL imgURL = getClass().getResource(imgPath);
+        if (imgURL != null) {
+            Image img = new Image(imgURL.toString());
+            btnMusica.setGraphic(new ImageView(img));
         } else {
-            btnMusica.setGraphic(new ImageView(imgSonidoOff));
+            System.out.println("No se encontró la imagen: " + imgPath);
         }
     }
 }
