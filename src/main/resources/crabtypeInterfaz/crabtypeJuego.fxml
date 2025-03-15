@@ -9,18 +9,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crabtype.juegoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../resources/crabtypeInterfaz/css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crabtype.controller.juegoController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/desarrollo.png" />
+            <Image url="@../../../resources/crabtypeInterfaz/img/desarrollo.png" />
          </image>
       </ImageView>
       <Button fx:id="btnMusica" layoutX="1184.0" layoutY="358.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/sonidoOn.png" />
+                  <Image url="@../../../resources/crabtypeInterfaz/img/sonidoOn.png" />
                </image>
             </ImageView>
          </graphic>
@@ -32,23 +32,24 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets></TextArea>
-      <ImageView fx:id="sol" fitHeight="300.0" fitWidth="300.0" layoutX="1034.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sol" fitHeight="300.0" fitWidth="300.0" layoutX="912.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/solTotal.png" />
+            <Image url="@../../../resources/crabtypeInterfaz/img/solTotal.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblTiempo" layoutX="566.0" layoutY="176.0" prefHeight="46.0" prefWidth="178.0">
+      <Label fx:id="lblTiempo" layoutX="566.0" layoutY="176.0" prefHeight="46.0" prefWidth="178.0" stylesheets="@../../../resources/crabtypeInterfaz/css/style.css">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="lblNivel" layoutX="531.0" layoutY="76.0" prefHeight="46.0" prefWidth="264.0">
+      <Label fx:id="lblNivel" layoutX="523.0" layoutY="66.0" prefHeight="46.0" prefWidth="264.0" stylesheets="@../../../resources/crabtypeInterfaz/css/style.css">
          <font>
             <Font size="30.0" />
          </font></Label>
-      <Label fx:id="lblFrase" layoutX="461.0" layoutY="290.0" prefHeight="127.0" prefWidth="372.0">
+      <Label fx:id="lblFrase" layoutX="461.0" layoutY="290.0" prefHeight="127.0" prefWidth="372.0" stylesheets="@../../../resources/crabtypeInterfaz/css/style.css">
          <font>
             <Font size="60.0" />
          </font></Label>
+      <Label fx:id="lblError" layoutX="497.0" layoutY="371.0" prefWidth="300.0" visible="false" text="" />
    </children>
 </AnchorPane>

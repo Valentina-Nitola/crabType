@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="crabtype.menuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="crabtype.controller.menuController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/inicio.png" />
+            <Image url="@../../../resources/crabtypeInterfaz/img/inicio.png" />
          </image>
       </ImageView>
       <Button fx:id="btnComenzar" layoutX="450.0" layoutY="311.0" mnemonicParsing="false" prefHeight="160.0" prefWidth="400.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="160.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/comenzarbtn.png" />
+                  <Image url="@../../../resources/crabtypeInterfaz/img/comenzarbtn.png" />
                </image>
             </ImageView>
          </graphic>
@@ -26,7 +26,7 @@
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/sonidoOn.png" />
+                  <Image url="@../../../resources/crabtypeInterfaz/img/sonidoOn.png" />
                </image>
             </ImageView>
          </graphic>
