@@ -4,7 +4,9 @@ module crabtype {
     requires java.desktop;
     requires javafx.media;
 
+    opens crabtype.view to javafx.graphics, javafx.fxml;
+    opens crabtype.controller to javafx.fxml;
 
-    opens crabtype to javafx.fxml;
-    exports crabtype;
+    exports crabtype.controller;
+    exports crabtype.view;
 }
