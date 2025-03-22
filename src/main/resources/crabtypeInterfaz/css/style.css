@@ -1,0 +1,64 @@
+/* Estilo general para los Labels */
+.label {
+    -fx-font-family: "Arial";
+    -fx-text-fill: #3E3E3E; /* Color gris oscuro */
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+/* Estilo para el nivel */
+#lblNivel {
+    -fx-font-size: 50px;
+    -fx-text-fill: #fff;
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+}
+
+/* Estilo para el temporizador */
+#lblTiempo {
+    -fx-font-size: 40px;
+    -fx-text-fill: #FF4500; /* Naranja intenso */
+    -fx-background-color: #FFF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+}
+
+/* Estilo para la palabra/frase */
+#lblFrase {
+    -fx-font-size: 70px;
+    -fx-text-fill: #000;
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-padding: 20px;
+    -fx-border-radius: 15px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+#lblError {
+    -fx-font-size: 30px;
+    -fx-text-fill: red;  /* Asegura que se vea */
+    -fx-background-color: transparent;
+    -fx-padding: 20px;
+    -fx-border-radius: 15px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+/* Estilo para el área de texto */
+#txtEntrada {
+    -fx-font-size: 40px;
+    -fx-text-fill: #000;
+    -fx-background-color: #F8F8F8;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+/* Botón de música */
+#btnMusica {
+    -fx-background-color: transparent;
+    -fx-border-radius: 50%;
+}
